@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./stylesheets/calculator.css">
+  <title>Calculator</title>
+  <script src="./calculator.js" defer></script>
+</head>
+
+<body>
+  <div class="boxed0">
+    <div class="boxed1">
+      <p style="color:black">
+      <header>Grade Calculator</header>
+      </p>
+      <div class="boxed">
+        <p id="red-text">Activities</p>
+        <p>Give grades to the numeric activities:</p>
+        <form action="/process_form" method="post">
+          <table>
+            <tr style="text-align: left;" id="table_top">
+              <th>Name</th>
+              <th >Short Name</th>
+              <th>Weight</th>
+              <th style="padding-right: 0px">Grade</th>
+              <th>Percent</th>
+            </tr>
+            <tr id="0">
+              <td>Activity 1</td>
+              <td>A1</td>
+              <td>
+                <input type="number" id="weight">
+              </td>
+              <td>
+                <input type="number" id="num1">
+                <p id="slash">/</p>
+                <input type="number" id="den1">
+              </td>
+              <td id="percent1"></td>
+            </tr>
+            <tr id="1">
+              <td>Activity 2</td>
+              <td>A2</td>
+              <td>
+                <input type="number" id="weight">
+              </td>
+              <td>
+                <input type="number" id="num2">
+                <p id="slash">/</p>
+                <input type="number" id="den2">
+              </td>
+              <td id="percent2"></td>
+            </tr>
+            <tr id = "2">
+              <td>Activity 3</td>
+              <td>A3</td>
+              <td>
+                <input type="number" id="weight">
+              </td>
+              <td>
+                <input type="number" id="num3">
+                <p id="slash">/</p>
+                <input type="number" id="den3">
+
+              </td>
+              <td id="percent3"></td>
+            </tr>
+            <tr id="3">
+              <td>Activity 4</td>
+              <td>A4</td>
+              <td>
+                <input type="number" id="weight">
+              </td>
+              <td>
+                <input type="number" id="num4">
+                <p id="slash" style="display: inline;">/</p>
+                <input type="number" id="den4">
+              </td>
+              <td id="percent4"></td>
+            </tr>
+          </table>
+        </form>
+        <p id="red-text">Result</p>
+        <p id="result"></p>
+        <p id ="lettergrade"></p>
+        <input type="button" value="WEIGHTED" onclick="getWeightedMean()" class="button1">
+        <input type="button" value="MEAN" onclick="getMean()" class="button2">
+        <!-- <input type="button" value="GRADE" onclick="getLetterGrade()" class="button3"> -->
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+</body>
+
+</html>
