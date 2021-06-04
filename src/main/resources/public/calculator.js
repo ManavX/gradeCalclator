@@ -2,6 +2,8 @@ var grades = [NaN, NaN, NaN, NaN];
 var weights = [NaN, NaN, NaN, NaN];
 var inputs = document.getElementsByTagName('input');
 
+var finalgrade = 0;
+
 for (var k = 0; k < inputs.length; k++) {
     if (inputs[k].type == 'number') {
         inputs[k].oninput = updatePercent;
@@ -23,6 +25,47 @@ function updatePercent(a) {
         cells[4].innerHTML = 'Not a grade';
     } else {
         cells[4].innerHTML = grade.toFixed(4) * 100 + "%";
+    }
+}
+
+function getLetterGrade() {
+    getWeightedMean();
+
+    if (finalgrade >= 95) {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: A+";
+    }
+    else if ( finalgrade >= 87)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: A";
+    }
+    else if ( finalgrade >= 82)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: A-";
+    }
+    else if ( finalgrade >= 78)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: B+";
+    }
+    else if ( finalgrade >= 74)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: B";
+    }
+    else if ( finalgrade >= 70)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: B-";
+    }
+    else if ( finalgrade >= 65)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: C+";
+    }
+    else if ( finalgrade >= 60)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: C";
+    }
+    else if ( finalgrade >= 55)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: C-";
+    }
+    else if ( finalgrade >= 50)  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: D";
+    }
+    else if ( finalgrade < 50 )  {
+        document.getElementById('lettergrade').innerHTML = "Letter Grade: F";
+    }
+    else {
+        document.getElementById('lettergrade').innerHTML = "No Grades/Weights Provided";
     }
 }
 
@@ -59,52 +102,13 @@ function getWeightedMean() {
             }
         }
     }
- 
+    finalgrade = (weightgrade / totalweight).toFixed(4) * 100;
     if (totalweight != 0) {
-        document.getElementById('result').innerHTML = (weightgrade / totalweight).toFixed(4) * 100 + '%';
+        document.getElementById('result').innerHTML = finalgrade + '%';
     }
     else {
         document.getElementById('result').innerHTML = "No weight submitted";
     }
 
-// return ((weightgrade / totalweight).toFixed(4) * 100);
 }
 
-// function getLetterGrade() {
-//     if (getWeightedMean() >= 95) {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: A+";
-//     }
-//     if ( getWeightedMean() >= 87 && getWeightedMean() < 95)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: A";
-//     }
-//     if ( getWeightedMean() >= 82 && getWeightedMean() < 87)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: A-";
-//     }
-//     if ( getWeightedMean() >= 78 && getWeightedMean() < 82)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: B+";
-//     }
-//     if ( getWeightedMean() >= 74 && getWeightedMean() < 78)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: B";
-//     }
-//     if ( getWeightedMean() >= 70 && getWeightedMean() < 74)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: B-";
-//     }
-//     if ( getWeightedMean() >= 65 && getWeightedMean() < 70)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: C+";
-//     }
-//     if ( getWeightedMean() >= 60 && getWeightedMean() < 65)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: C";
-//     }
-//     if ( getWeightedMean() >= 55 && getWeightedMean() < 60)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: C-";
-//     }
-//     if ( getWeightedMean() >= 50 && getWeightedMean() < 55)  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: D";
-//     }
-//     if ( getWeightedMean() < 50 )  {
-//         document.getElementById('lettergrade').innerHTML = "Letter Grade: D";
-//     }
-//     else {
-//         document.getElementById('lettergrade').innerHTML = "No Grades Provided";
-//     }
-// }
